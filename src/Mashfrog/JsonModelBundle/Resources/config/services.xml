@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+
+        <service id="app_darce_json_model.service.file_generator" class="App\Darce\JsonModelBundle\Service\FileGenerator">
+            <argument type="service" id="filesystem" />
+            <argument>%kernel.project_dir%</argument>
+        </service>
+
+        <service id="app_darce_json_model.service.model_generator" class="App\Darce\JsonModelBundle\Service\ModelGenerator">
+        </service>
+
+        <service id="app_darce_json_model.make_model_command" class="App\Darce\JsonModelBundle\Command\MakeModelCommand">
+            <argument type="service" id="app_darce_json_model.service.model_generator" />
+            <argument type="service" id="app_darce_json_model.service.file_generator" />
+            <tag name="console.command" />
+        </service>
+
+        <!-- ALIAS for Services -->
+        <service id="App\Darce\JsonModelBundle\Service\FileGenerator" alias="app_darce_json_model.service.file_generator" public="false"/>
+        <service id="App\Darce\JsonModelBundle\Service\ModelGenerator" alias="app_darce_json_model.service.model_generator" public="false"/>
+    </services>
+</container>

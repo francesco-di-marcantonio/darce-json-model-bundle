@@ -1,0 +1,8 @@
+#Per lanciare phpstan: php ./vendor/bin/phpstan analyse -l X -c phpstan/extension.neon src
+
+includes:
+    - ../vendor/phpstan/phpstan-strict-rules/rules.neon
+
+parameters:
+    excludes_analyse:
+        - %currentWorkingDirectory%/src/Darce/JsonModelBundle/Tests

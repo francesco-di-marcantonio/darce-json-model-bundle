@@ -1,0 +1,6 @@
+services:
+    App\Darce\JsonModelBundle\Command\:
+        resource: '../src/Darce/JsonModelBundle/Command/*'
+        tags: ['console.command']
+        autowire: true
+        autoconfigure: true
